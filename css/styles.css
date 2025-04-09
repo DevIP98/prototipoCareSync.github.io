@@ -1,0 +1,217 @@
+/* Estilos personalizados para CareSync */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #0dcaf0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Animación para el login */
+.card {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mejorar visualización de elementos enfocados */
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estilos para el dashboard */
+.sidebar {
+    background-color: #1e2a38;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* Estilo para el logo del sidebar */
+.sidebar .logo-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem 0.75rem;
+    background-color: #152231;
+}
+
+.sidebar .logo-container img {
+    max-height: 120px;
+    width: auto;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    padding: 5px;
+}
+
+.sidebar .logo-container h4 {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.sidebar .logo-container p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem 0;
+    border-radius: 0.25rem;
+}
+
+.sidebar .nav-link:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
+/* Estilos para las tarjetas de pacientes */
+.patient-card {
+    transition: transform 0.3s ease;
+}
+
+.patient-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para el mapa de dispositivos */
+#deviceMap {
+    position: relative;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.device-point {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #28a745;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.device-point:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.device-point.warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.device-point.disconnected {
+    background-color: #dc3545;
+}
+
+.map-area {
+    position: absolute;
+    border: 2px dashed #6c757d;
+    border-radius: 8px;
+    background-color: rgba(108, 117, 125, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    pointer-events: none;
+}
+
+/* Estilos para alertas en vivo */
+.alert-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.alert-high {
+    background-color: #dc3545;
+}
+
+.alert-medium {
+    background-color: #ffc107;
+}
+
+.alert-low {
+    background-color: #0dcaf0;
+}
+
+/* Estilos adicionales para las tarjetas de resumen */
+.border-left-primary {
+    border-left: 4px solid #0d6efd;
+}
+
+.border-left-success {
+    border-left: 4px solid #198754;
+}
+
+.border-left-info {
+    border-left: 4px solid #0dcaf0;
+}
+
+.border-left-warning {
+    border-left: 4px solid #ffc107;
+}
+
+.border-left-danger {
+    border-left: 4px solid #dc3545;
+}
+
+/* Estilos para el menú responsivo */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .sidebar.collapse:not(.show) {
+        display: none;
+    }
+
+    .sidebar.show {
+        display: block;
+    }
+} 

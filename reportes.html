@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync - Reportes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar / Menú lateral -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="logo-container">
+                        <img src="img/logo.jpg" alt="CareSync Logo" class="img-fluid">
+                        <h4 class="text-white">CareSync</h4>
+                        <p class="text-white-50">Gestión de Cuidados</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pacientes.html">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Registro de Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alertas.html">
+                                <i class="fas fa-bell me-2"></i>
+                                Alertas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="reportes.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dispositivos.html">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Dispositivos IoT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portal.html">
+                                <i class="fas fa-users me-2"></i>
+                                Portal Familiar
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link text-danger" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Navbar superior con botón para mostrar/ocultar menú -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <h1 class="h2 mb-0">Reportes de Salud</h1>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Admin
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Filtros de reportes -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Filtros de Reportes</h6>
+                            </div>
+                            <div class="card-body">
+                                <form class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="tipoReporte" class="form-label">Tipo de Reporte</label>
+                                        <select class="form-select" id="tipoReporte">
+                                            <option value="todos" selected>Todos</option>
+                                            <option value="signos_vitales">Signos Vitales</option>
+                                            <option value="medicacion">Medicación</option>
+                                            <option value="actividad">Actividad</option>
+                                            <option value="visitas">Visitas Médicas</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="pacienteReporte" class="form-label">Paciente</label>
+                                        <select class="form-select" id="pacienteReporte">
+                                            <option value="todos" selected>Todos</option>
+                                            <option value="1">María López</option>
+                                            <option value="2">Juan Pérez</option>
+                                            <option value="3">Carmen Ruiz</option>
+                                            <option value="4">Manuel García</option>
+                                            <option value="5">Carmen Torres</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+                                        <input type="date" class="form-control" id="fechaInicio">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="fechaFin" class="form-label">Fecha Fin</label>
+                                        <input type="date" class="form-control" id="fechaFin">
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                                        <button type="reset" class="btn btn-secondary">Limpiar</button>
+                                        <div class="float-end">
+                                            <button type="button" class="btn btn-success">
+                                                <i class="fas fa-file-excel me-1"></i> Exportar Excel
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fas fa-file-pdf me-1"></i> Exportar PDF
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de reportes -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Informe de Signos Vitales</h6>
+                                <span class="badge bg-primary">Último mes</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Paciente</th>
+                                                <th>Presión Arterial</th>
+                                                <th>Frecuencia Cardíaca</th>
+                                                <th>Temperatura</th>
+                                                <th>Nivel de Glucosa</th>
+                                                <th>Saturación O₂</th>
+                                                <th>Notas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>20/10/2023</td>
+                                                <td>Manuel García</td>
+                                                <td class="text-danger">180/110 mmHg</td>
+                                                <td>95 bpm</td>
+                                                <td>36.5°C</td>
+                                                <td>110 mg/dL</td>
+                                                <td>98%</td>
+                                                <td>Presión arterial elevada</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20/10/2023</td>
+                                                <td>Carmen Torres</td>
+                                                <td>120/80 mmHg</td>
+                                                <td>72 bpm</td>
+                                                <td>36.7°C</td>
+                                                <td class="text-warning">65 mg/dL</td>
+                                                <td>98%</td>
+                                                <td>Nivel de glucosa bajo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>19/10/2023</td>
+                                                <td>María López</td>
+                                                <td>135/85 mmHg</td>
+                                                <td>78 bpm</td>
+                                                <td>36.3°C</td>
+                                                <td>105 mg/dL</td>
+                                                <td>99%</td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td>19/10/2023</td>
+                                                <td>Juan Pérez</td>
+                                                <td>125/75 mmHg</td>
+                                                <td>68 bpm</td>
+                                                <td>36.5°C</td>
+                                                <td class="text-danger">185 mg/dL</td>
+                                                <td>97%</td>
+                                                <td>Glucosa elevada - Requiere ajuste de insulina</td>
+                                            </tr>
+                                            <tr>
+                                                <td>18/10/2023</td>
+                                                <td>Carmen Ruiz</td>
+                                                <td>140/85 mmHg</td>
+                                                <td>82 bpm</td>
+                                                <td class="text-warning">37.5°C</td>
+                                                <td>110 mg/dL</td>
+                                                <td>96%</td>
+                                                <td>Temperatura ligeramente elevada</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Navegación de paginación">
+                                    <ul class="pagination justify-content-center mt-4">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Siguiente</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos de tendencias -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Tendencia de Presión Arterial</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <div class="chart-area">
+                                        <canvas id="presionArterialChart"></canvas>
+                                    </div>
+                                </div>
+                                <p class="text-muted small">Este gráfico muestra la tendencia de presión arterial del paciente seleccionado durante el período de tiempo especificado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Tendencia de Nivel de Glucosa</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <div class="chart-area">
+                                        <canvas id="glucosaChart"></canvas>
+                                    </div>
+                                </div>
+                                <p class="text-muted small">Este gráfico muestra la tendencia del nivel de glucosa del paciente seleccionado durante el período de tiempo especificado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js - Para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Script personalizado para las gráficas -->
+    <script>
+        // Datos para el gráfico de presión arterial
+        const ctxPresion = document.getElementById('presionArterialChart').getContext('2d');
+        const presionChart = new Chart(ctxPresion, {
+            type: 'line',
+            data: {
+                labels: ['15 Oct', '16 Oct', '17 Oct', '18 Oct', '19 Oct', '20 Oct'],
+                datasets: [{
+                    label: 'Sistólica',
+                    data: [120, 125, 130, 140, 135, 130],
+                    borderColor: 'rgba(220, 53, 69, 1)',
+                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Diastólica',
+                    data: [80, 85, 90, 90, 85, 80],
+                    borderColor: 'rgba(13, 110, 253, 1)',
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Evolución de Presión Arterial'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 60,
+                        max: 160
+                    }
+                }
+            }
+        });
+
+        // Datos para el gráfico de glucosa
+        const ctxGlucosa = document.getElementById('glucosaChart').getContext('2d');
+        const glucosaChart = new Chart(ctxGlucosa, {
+            type: 'line',
+            data: {
+                labels: ['15 Oct', '16 Oct', '17 Oct', '18 Oct', '19 Oct', '20 Oct'],
+                datasets: [{
+                    label: 'Nivel de Glucosa',
+                    data: [95, 110, 105, 120, 185, 110],
+                    borderColor: 'rgba(40, 167, 69, 1)',
+                    backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 5,
+                    pointBackgroundColor: function(context) {
+                        var index = context.dataIndex;
+                        var value = context.dataset.data[index];
+                        return value > 150 ? 'rgba(220, 53, 69, 1)' : 
+                               value < 70 ? 'rgba(255, 193, 7, 1)' : 
+                               'rgba(40, 167, 69, 1)';
+                    }
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Evolución de Nivel de Glucosa (mg/dL)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 50,
+                        max: 200
+                    }
+                }
+            }
+        });
+    </script>
+    
+    <!-- Script personalizado para el menú -->
+    <script>
+        // Cerrar menú cuando se hace clic en un enlace en pantallas pequeñas
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    document.querySelector('#sidebarMenu').classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

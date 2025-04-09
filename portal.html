@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync - Portal Familiar</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar / Menú lateral -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="logo-container">
+                        <img src="img/logo.jpg" alt="CareSync Logo" class="img-fluid">
+                        <h4 class="text-white">CareSync</h4>
+                        <p class="text-white-50">Gestión de Cuidados</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pacientes.html">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Registro de Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alertas.html">
+                                <i class="fas fa-bell me-2"></i>
+                                Alertas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dispositivos.html">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Dispositivos IoT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="portal.html">
+                                <i class="fas fa-users me-2"></i>
+                                Portal Familiar
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link text-danger" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Navbar superior con botón para mostrar/ocultar menú -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <h1 class="h2 mb-0">Portal Familiar</h1>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Admin
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Resumen de portales -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Familiares Registrados</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">32</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Conexiones Hoy</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">14</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-sign-in-alt fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Mensajes Nuevos</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Invitaciones Pendientes</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-plus fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de familiares y accesos -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Familiares Registrados</h6>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-plus me-1"></i> Nueva Invitación
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Familiar</th>
+                                                <th>Paciente</th>
+                                                <th>Relación</th>
+                                                <th>Fecha de Registro</th>
+                                                <th>Último Acceso</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary text-white rounded-circle p-2 me-2">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        Laura García
+                                                    </div>
+                                                </td>
+                                                <td>Manuel García</td>
+                                                <td>Hija</td>
+                                                <td>15/09/2023</td>
+                                                <td>Hoy, 09:45</td>
+                                                <td><span class="badge bg-success">Activo</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary text-white rounded-circle p-2 me-2">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        Carlos Pérez
+                                                    </div>
+                                                </td>
+                                                <td>Juan Pérez</td>
+                                                <td>Hijo</td>
+                                                <td>20/09/2023</td>
+                                                <td>Ayer, 16:30</td>
+                                                <td><span class="badge bg-success">Activo</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary text-white rounded-circle p-2 me-2">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        Ana Torres
+                                                    </div>
+                                                </td>
+                                                <td>Carmen Torres</td>
+                                                <td>Nieta</td>
+                                                <td>05/10/2023</td>
+                                                <td>Hoy, 08:15</td>
+                                                <td><span class="badge bg-success">Activo</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary text-white rounded-circle p-2 me-2">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        Marta Ruiz
+                                                    </div>
+                                                </td>
+                                                <td>Carmen Ruiz</td>
+                                                <td>Sobrina</td>
+                                                <td>10/10/2023</td>
+                                                <td>Hace 3 días</td>
+                                                <td><span class="badge bg-warning">Inactivo</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary text-white rounded-circle p-2 me-2">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        Roberto Martín
+                                                    </div>
+                                                </td>
+                                                <td>Luis Martín</td>
+                                                <td>Hijo</td>
+                                                <td>12/10/2023</td>
+                                                <td>Pendiente</td>
+                                                <td><span class="badge bg-info">Invitación Enviada</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-envelope"></i> Reenviar</button>
+                                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times"></i> Cancelar</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Navegación de paginación">
+                                    <ul class="pagination justify-content-center mt-4">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Siguiente</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuración del portal y notificaciones -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Configuración del Portal</h6>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="portalName" class="form-label">Nombre del Portal</label>
+                                        <input type="text" class="form-control" id="portalName" value="Portal Familiar CareSync">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="portalDescription" class="form-label">Descripción</label>
+                                        <textarea class="form-control" id="portalDescription" rows="2">Portal de comunicación para familiares de pacientes de CareSync.</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Permisos predeterminados para familiares</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="viewHealthData" checked>
+                                            <label class="form-check-label" for="viewHealthData">
+                                                Ver datos de salud
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="viewAlerts" checked>
+                                            <label class="form-check-label" for="viewAlerts">
+                                                Recibir alertas
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="viewReports" checked>
+                                            <label class="form-check-label" for="viewReports">
+                                                Acceder a reportes
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="communicateCaregivers" checked>
+                                            <label class="form-check-label" for="communicateCaregivers">
+                                                Comunicación con cuidadores
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Mensajes Recientes</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="overflow-auto" style="max-height: 300px;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">Laura García</h6>
+                                                <small class="text-muted">Hace 10 min</small>
+                                            </div>
+                                            <p class="mb-1">¿Podría recibir una actualización sobre el estado de mi padre hoy?</p>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-sm btn-outline-primary">Responder</button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">Carlos Pérez</h6>
+                                                <small class="text-muted">Hace 2 horas</small>
+                                            </div>
+                                            <p class="mb-1">Gracias por la información sobre las nuevas medicinas.</p>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-sm btn-outline-primary">Responder</button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">Ana Torres</h6>
+                                                <small class="text-muted">Ayer</small>
+                                            </div>
+                                            <p class="mb-1">¿Cuándo será la próxima cita médica para mi abuela?</p>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-sm btn-outline-primary">Responder</button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">Marta Ruiz</h6>
+                                                <small class="text-muted">Hace 3 días</small>
+                                            </div>
+                                            <p class="mb-1">Me gustaría programar una videollamada con mi tía este fin de semana.</p>
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-sm btn-outline-primary">Responder</button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="d-grid gap-2 mt-3">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-comments me-1"></i> Ver Todos los Mensajes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script personalizado para el menú -->
+    <script>
+        // Cerrar menú cuando se hace clic en un enlace en pantallas pequeñas
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    document.querySelector('#sidebarMenu').classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

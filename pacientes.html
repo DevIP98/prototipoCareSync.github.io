@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync - Registro de Pacientes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar / Menú lateral -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="logo-container">
+                        <img src="img/logo.jpg" alt="CareSync Logo" class="img-fluid">
+                        <h4 class="text-white">CareSync</h4>
+                        <p class="text-white-50">Gestión de Cuidados</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="pacientes.html">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Registro de Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alertas.html">
+                                <i class="fas fa-bell me-2"></i>
+                                Alertas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dispositivos.html">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Dispositivos IoT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portal.html">
+                                <i class="fas fa-users me-2"></i>
+                                Portal Familiar
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link text-danger" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Registro de Pacientes</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Admin
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pestañas de navegación -->
+                <ul class="nav nav-tabs mb-4" id="pacientesTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="listado-tab" data-bs-toggle="tab" data-bs-target="#listado" type="button" role="tab" aria-controls="listado" aria-selected="true">
+                            <i class="fas fa-list me-2"></i>Listado de Pacientes
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nuevo-tab" data-bs-toggle="tab" data-bs-target="#nuevo" type="button" role="tab" aria-controls="nuevo" aria-selected="false">
+                            <i class="fas fa-user-plus me-2"></i>Nuevo Paciente
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Contenido de las pestañas -->
+                <div class="tab-content" id="pacientesTabContent">
+                    <!-- Pestaña de listado de pacientes -->
+                    <div class="tab-pane fade show active" id="listado" role="tabpanel" aria-labelledby="listado-tab">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Listado de Pacientes</h6>
+                                <div class="input-group w-50">
+                                    <input type="text" class="form-control" placeholder="Buscar paciente...">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Edad</th>
+                                                <th>Condición</th>
+                                                <th>Contacto</th>
+                                                <th>Última revisión</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>PAC-001</td>
+                                                <td>María López</td>
+                                                <td>72</td>
+                                                <td>Hipertensión</td>
+                                                <td>maria.lopez@email.com</td>
+                                                <td>10/10/2023</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PAC-002</td>
+                                                <td>Juan Pérez</td>
+                                                <td>68</td>
+                                                <td>Diabetes Tipo 2</td>
+                                                <td>juan.perez@email.com</td>
+                                                <td>15/10/2023</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PAC-003</td>
+                                                <td>Carmen Ruiz</td>
+                                                <td>81</td>
+                                                <td>Artritis</td>
+                                                <td>carmen.ruiz@email.com</td>
+                                                <td>05/10/2023</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PAC-004</td>
+                                                <td>Manuel García</td>
+                                                <td>75</td>
+                                                <td>Hipertensión, Parkinson</td>
+                                                <td>manuel.garcia@email.com</td>
+                                                <td>12/10/2023</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>PAC-005</td>
+                                                <td>Carmen Torres</td>
+                                                <td>69</td>
+                                                <td>Diabetes</td>
+                                                <td>carmen.torres@email.com</td>
+                                                <td>08/10/2023</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i></button>
+                                                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Navegación de paginación">
+                                    <ul class="pagination justify-content-center mt-4">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Siguiente</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pestaña de nuevo paciente -->
+                    <div class="tab-pane fade" id="nuevo" role="tabpanel" aria-labelledby="nuevo-tab">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Registrar Nuevo Paciente</h6>
+                            </div>
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate>
+                                    <div class="row mb-4">
+                                        <div class="col-12 mb-3">
+                                            <h5 class="border-bottom pb-2">Información Personal</h5>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="nombres" class="form-label">Nombres</label>
+                                            <input type="text" class="form-control" id="nombres" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese los nombres.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="apellidos" class="form-label">Apellidos</label>
+                                            <input type="text" class="form-control" id="apellidos" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese los apellidos.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                                            <input type="date" class="form-control" id="fechaNacimiento" required>
+                                            <div class="invalid-feedback">
+                                                Por favor seleccione una fecha válida.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="genero" class="form-label">Género</label>
+                                            <select class="form-select" id="genero" required>
+                                                <option value="" selected disabled>Seleccionar...</option>
+                                                <option value="masculino">Masculino</option>
+                                                <option value="femenino">Femenino</option>
+                                                <option value="otro">Otro</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor seleccione un género.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="identificacion" class="form-label">Número de Identificación</label>
+                                            <input type="text" class="form-control" id="identificacion" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese el número de identificación.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-12 mb-3">
+                                            <h5 class="border-bottom pb-2">Información de Contacto</h5>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="telefono" class="form-label">Teléfono</label>
+                                            <input type="tel" class="form-control" id="telefono" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese un número de teléfono válido.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email" class="form-label">Correo Electrónico</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese un correo electrónico válido.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="direccion" class="form-label">Dirección</label>
+                                            <input type="text" class="form-control" id="direccion" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese una dirección.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-12 mb-3">
+                                            <h5 class="border-bottom pb-2">Información Médica</h5>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="condicionesMedicas" class="form-label">Condiciones Médicas</label>
+                                            <textarea class="form-control" id="condicionesMedicas" rows="3" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese las condiciones médicas.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="medicamentos" class="form-label">Medicamentos Actuales</label>
+                                            <textarea class="form-control" id="medicamentos" rows="3" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese los medicamentos actuales.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="alergias" class="form-label">Alergias</label>
+                                            <input type="text" class="form-control" id="alergias">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="grupoSanguineo" class="form-label">Grupo Sanguíneo</label>
+                                            <select class="form-select" id="grupoSanguineo" required>
+                                                <option value="" selected disabled>Seleccionar...</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor seleccione un grupo sanguíneo.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-12 mb-3">
+                                            <h5 class="border-bottom pb-2">Contacto de Emergencia</h5>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="nombreContacto" class="form-label">Nombre del Contacto</label>
+                                            <input type="text" class="form-control" id="nombreContacto" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese el nombre del contacto.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="telefonoContacto" class="form-label">Teléfono del Contacto</label>
+                                            <input type="tel" class="form-control" id="telefonoContacto" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese un número de teléfono válido.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="relacionContacto" class="form-label">Relación con el Paciente</label>
+                                            <input type="text" class="form-control" id="relacionContacto" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingrese la relación con el paciente.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button type="button" class="btn btn-secondary me-md-2">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar Paciente</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para validación de formularios -->
+    <script>
+        // Ejemplo de JavaScript para deshabilitar el envío de formularios si hay campos no válidos
+        (function () {
+            'use strict'
+
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Bucle sobre ellos y evitar el envío
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+</body>
+</html> 

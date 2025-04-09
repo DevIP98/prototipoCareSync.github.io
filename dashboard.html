@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync - Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar / Menú lateral -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="logo-container">
+                        <img src="img/logo.jpg" alt="CareSync Logo" class="img-fluid">
+                        <h4 class="text-white">CareSync</h4>
+                        <p class="text-white-50">Gestión de Cuidados</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html">
+                                <i class="fas fa-home me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pacientes.html">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Registro de Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alertas.html">
+                                <i class="fas fa-bell me-2"></i>
+                                Alertas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dispositivos.html">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Dispositivos IoT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portal.html">
+                                <i class="fas fa-users me-2"></i>
+                                Portal Familiar
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link text-danger" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Navbar superior con botón para mostrar/ocultar menú -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <h1 class="h2 mb-0">Panel de Control</h1>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Admin
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Tarjetas de resumen -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pacientes Totales</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">45</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Visitas Hoy</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar-check fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Alertas Activas</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-bell fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Dispositivos Conectados</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-heartbeat fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alertas recientes -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Alertas Recientes</h6>
+                                <a href="alertas.html" class="btn btn-sm btn-primary">Ver todas</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nivel</th>
+                                                <th>Paciente</th>
+                                                <th>Descripción</th>
+                                                <th>Tiempo</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="alert-indicator alert-high"></span> Alto</td>
+                                                <td>Manuel García</td>
+                                                <td>Presión arterial elevada</td>
+                                                <td>Hace 5 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                                    <button class="btn btn-sm btn-outline-success">Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="alert-indicator alert-medium"></span> Medio</td>
+                                                <td>Carmen Torres</td>
+                                                <td>Nivel de glucosa bajo</td>
+                                                <td>Hace 15 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                                    <button class="btn btn-sm btn-outline-success">Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="alert-indicator alert-low"></span> Bajo</td>
+                                                <td>Luis Martín</td>
+                                                <td>Bajo nivel de actividad</td>
+                                                <td>Hace 30 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">Ver</button>
+                                                    <button class="btn btn-sm btn-outline-success">Atender</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pacientes recientes -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Pacientes Recientes</h6>
+                                <a href="pacientes.html" class="btn btn-sm btn-primary">Ver todos</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4 mb-4">
+                                        <div class="card patient-card shadow-sm">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar bg-primary text-white rounded-circle p-3 me-3">
+                                                        <i class="fas fa-user"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0">María López</h5>
+                                                        <small class="text-muted">ID: PAC-001</small>
+                                                    </div>
+                                                </div>
+                                                <p><i class="fas fa-birthday-cake me-2 text-primary"></i> 72 años</p>
+                                                <p><i class="fas fa-heartbeat me-2 text-danger"></i> Hipertensión</p>
+                                                <div class="text-end mt-3">
+                                                    <button class="btn btn-sm btn-outline-primary">Ver perfil</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-4">
+                                        <div class="card patient-card shadow-sm">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar bg-primary text-white rounded-circle p-3 me-3">
+                                                        <i class="fas fa-user"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0">Juan Pérez</h5>
+                                                        <small class="text-muted">ID: PAC-002</small>
+                                                    </div>
+                                                </div>
+                                                <p><i class="fas fa-birthday-cake me-2 text-primary"></i> 68 años</p>
+                                                <p><i class="fas fa-heartbeat me-2 text-danger"></i> Diabetes Tipo 2</p>
+                                                <div class="text-end mt-3">
+                                                    <button class="btn btn-sm btn-outline-primary">Ver perfil</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 mb-4">
+                                        <div class="card patient-card shadow-sm">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar bg-primary text-white rounded-circle p-3 me-3">
+                                                        <i class="fas fa-user"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="mb-0">Carmen Ruiz</h5>
+                                                        <small class="text-muted">ID: PAC-003</small>
+                                                    </div>
+                                                </div>
+                                                <p><i class="fas fa-birthday-cake me-2 text-primary"></i> 81 años</p>
+                                                <p><i class="fas fa-heartbeat me-2 text-danger"></i> Artritis</p>
+                                                <div class="text-end mt-3">
+                                                    <button class="btn btn-sm btn-outline-primary">Ver perfil</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script personalizado para el menú -->
+    <script>
+        // Cerrar menú cuando se hace clic en un enlace en pantallas pequeñas
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    document.querySelector('#sidebarMenu').classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

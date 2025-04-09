@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync - Alertas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar / Menú lateral -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="logo-container">
+                        <img src="img/logo.jpg" alt="CareSync Logo" class="img-fluid">
+                        <h4 class="text-white">CareSync</h4>
+                        <p class="text-white-50">Gestión de Cuidados</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pacientes.html">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Registro de Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="alertas.html">
+                                <i class="fas fa-bell me-2"></i>
+                                Alertas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dispositivos.html">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Dispositivos IoT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portal.html">
+                                <i class="fas fa-users me-2"></i>
+                                Portal Familiar
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link text-danger" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Sistema de Alertas</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button type="button" class="btn btn-sm btn-outline-danger me-2">
+                            <i class="fas fa-bell me-1"></i> Alertas Activas: <span class="badge bg-danger">5</span>
+                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Admin
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen de alertas -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-danger shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Alertas Críticas</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Alertas Medias</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-exclamation-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Alertas Bajas</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-info-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Alertas Resueltas Hoy</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros de alertas -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Filtros</h6>
+                            </div>
+                            <div class="card-body">
+                                <form class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="nivelAlerta" class="form-label">Nivel de Alerta</label>
+                                        <select class="form-select" id="nivelAlerta">
+                                            <option value="" selected>Todos</option>
+                                            <option value="alto">Alto</option>
+                                            <option value="medio">Medio</option>
+                                            <option value="bajo">Bajo</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="paciente" class="form-label">Paciente</label>
+                                        <select class="form-select" id="paciente">
+                                            <option value="" selected>Todos</option>
+                                            <option value="1">María López</option>
+                                            <option value="2">Juan Pérez</option>
+                                            <option value="3">Carmen Ruiz</option>
+                                            <option value="4">Manuel García</option>
+                                            <option value="5">Carmen Torres</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="tipoAlerta" class="form-label">Tipo de Alerta</label>
+                                        <select class="form-select" id="tipoAlerta">
+                                            <option value="" selected>Todos</option>
+                                            <option value="vitales">Signos Vitales</option>
+                                            <option value="medicacion">Medicación</option>
+                                            <option value="actividad">Actividad</option>
+                                            <option value="caida">Caída</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="estado" class="form-label">Estado</label>
+                                        <select class="form-select" id="estado">
+                                            <option value="" selected>Todos</option>
+                                            <option value="activa">Activa</option>
+                                            <option value="atendiendo">En atención</option>
+                                            <option value="resuelta">Resuelta</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                                        <button type="reset" class="btn btn-secondary">Limpiar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alertas en tiempo real -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Alertas en Tiempo Real</h6>
+                                <div>
+                                    <span class="text-success me-2"><i class="fas fa-wifi"></i> Conectado</span>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" id="refreshBtn">
+                                        <i class="fas fa-sync-alt"></i> Actualizar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nivel</th>
+                                                <th>Tipo</th>
+                                                <th>Paciente</th>
+                                                <th>Descripción</th>
+                                                <th>Fecha y Hora</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-danger">
+                                                <td><span class="alert-indicator alert-high"></span> Alto</td>
+                                                <td>Signos Vitales</td>
+                                                <td>Manuel García</td>
+                                                <td>Presión arterial elevada (180/110 mmHg)</td>
+                                                <td>20/10/2023 08:45</td>
+                                                <td><span class="badge bg-danger">Activa</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-danger">
+                                                <td><span class="alert-indicator alert-high"></span> Alto</td>
+                                                <td>Caída</td>
+                                                <td>Carmen Ruiz</td>
+                                                <td>Detección de caída en sala</td>
+                                                <td>20/10/2023 09:10</td>
+                                                <td><span class="badge bg-danger">Activa</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-warning">
+                                                <td><span class="alert-indicator alert-medium"></span> Medio</td>
+                                                <td>Signos Vitales</td>
+                                                <td>Carmen Torres</td>
+                                                <td>Nivel de glucosa bajo (65 mg/dL)</td>
+                                                <td>20/10/2023 07:35</td>
+                                                <td><span class="badge bg-warning text-dark">Activa</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-warning">
+                                                <td><span class="alert-indicator alert-medium"></span> Medio</td>
+                                                <td>Medicación</td>
+                                                <td>Juan Pérez</td>
+                                                <td>Medicamento no tomado: Insulina</td>
+                                                <td>20/10/2023 08:00</td>
+                                                <td><span class="badge bg-primary">En atención</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Resolver</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="table-warning">
+                                                <td><span class="alert-indicator alert-medium"></span> Medio</td>
+                                                <td>Medicación</td>
+                                                <td>María López</td>
+                                                <td>Medicamento no tomado: Enalapril</td>
+                                                <td>20/10/2023 08:30</td>
+                                                <td><span class="badge bg-warning text-dark">Activa</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="alert-indicator alert-low"></span> Bajo</td>
+                                                <td>Actividad</td>
+                                                <td>Luis Martín</td>
+                                                <td>Bajo nivel de actividad en las últimas 24h</td>
+                                                <td>20/10/2023 06:45</td>
+                                                <td><span class="badge bg-info">Activa</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-success"><i class="fas fa-check"></i> Atender</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="alert-indicator alert-low"></span> Bajo</td>
+                                                <td>Signos Vitales</td>
+                                                <td>Carmen Ruiz</td>
+                                                <td>Temperatura ligeramente elevada (37.5°C)</td>
+                                                <td>20/10/2023 05:15</td>
+                                                <td><span class="badge bg-success">Resuelta</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detalleModal"><i class="fas fa-eye"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-history"></i> Historial</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <nav aria-label="Navegación de paginación">
+                                    <ul class="pagination justify-content-center mt-4">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Siguiente</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfico de alertas -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Estadísticas de Alertas</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-lg-8">
+                                        <div class="chart-area">
+                                            <canvas id="alertasLineChart"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="chart-pie mb-4">
+                                            <canvas id="alertasPieChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-primary">Distribución por Tipo</h6>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Signos Vitales
+                                                <span class="badge bg-primary rounded-pill">43%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Medicación
+                                                <span class="badge bg-primary rounded-pill">28%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Actividad
+                                                <span class="badge bg-primary rounded-pill">15%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Caídas
+                                                <span class="badge bg-primary rounded-pill">14%</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-primary">Distribución por Nivel</h6>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Alto
+                                                <span class="badge bg-danger rounded-pill">25%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Medio
+                                                <span class="badge bg-warning text-dark rounded-pill">35%</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Bajo
+                                                <span class="badge bg-info rounded-pill">40%</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalle de Alerta -->
+    <div class="modal fade" id="detalleModal" tabindex="-1" aria-labelledby="detalleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="detalleModalLabel">Detalle de Alerta</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2 mb-3">Información de la Alerta</h6>
+                            <p><strong>ID:</strong> ALT-2023100001</p>
+                            <p><strong>Nivel:</strong> <span class="badge bg-danger">Alto</span></p>
+                            <p><strong>Tipo:</strong> Signos Vitales</p>
+                            <p><strong>Descripción:</strong> Presión arterial elevada (180/110 mmHg)</p>
+                            <p><strong>Fecha y Hora:</strong> 20/10/2023 08:45</p>
+                            <p><strong>Estado:</strong> <span class="badge bg-danger">Activa</span></p>
+                            <p><strong>Dispositivo:</strong> Monitor de presión arterial - ID: DEV-001</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2 mb-3">Información del Paciente</h6>
+                            <p><strong>ID:</strong> PAC-004</p>
+                            <p><strong>Nombre:</strong> Manuel García</p>
+                            <p><strong>Edad:</strong> 75 años</p>
+                            <p><strong>Historial médico:</strong> Hipertensión, Parkinson</p>
+                            <p><strong>Medicación actual:</strong> Enalapril 10mg, Levodopa 100mg</p>
+                            <p><strong>Última revisión:</strong> 12/10/2023</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2 mb-3">Historial de Lecturas</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha y Hora</th>
+                                            <th>Presión Sistólica</th>
+                                            <th>Presión Diastólica</th>
+                                            <th>Pulso</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-danger">
+                                            <td>20/10/2023 08:45</td>
+                                            <td>180 mmHg</td>
+                                            <td>110 mmHg</td>
+                                            <td>95 bpm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20/10/2023 07:30</td>
+                                            <td>165 mmHg</td>
+                                            <td>105 mmHg</td>
+                                            <td>90 bpm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>20/10/2023 06:15</td>
+                                            <td>150 mmHg</td>
+                                            <td>95 mmHg</td>
+                                            <td>85 bpm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>19/10/2023 22:00</td>
+                                            <td>145 mmHg</td>
+                                            <td>90 mmHg</td>
+                                            <td>80 bpm</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2 mb-3">Acciones Recomendadas</h6>
+                            <ul>
+                                <li>Verificar si el paciente ha tomado su medicación para la hipertensión</li>
+                                <li>Contactar al médico del paciente</li>
+                                <li>Considerar la administración de medicación de emergencia según las indicaciones médicas</li>
+                                <li>Monitorear continuamente durante las siguientes horas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success">Atender Alerta</button>
+                    <button type="button" class="btn btn-primary">Notificar a Médico</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js - Para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Script personalizado para las gráficas -->
+    <script>
+        // Gráfico de línea para alertas por día
+        const ctxLine = document.getElementById('alertasLineChart').getContext('2d');
+        const alertasLineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['14 Oct', '15 Oct', '16 Oct', '17 Oct', '18 Oct', '19 Oct', '20 Oct'],
+                datasets: [{
+                    label: 'Alertas de nivel alto',
+                    data: [2, 1, 3, 2, 4, 3, 5],
+                    borderColor: 'rgba(220, 53, 69, 1)',
+                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Alertas de nivel medio',
+                    data: [4, 3, 5, 6, 4, 5, 7],
+                    borderColor: 'rgba(255, 193, 7, 1)',
+                    backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Alertas de nivel bajo',
+                    data: [5, 6, 4, 7, 6, 8, 8],
+                    borderColor: 'rgba(13, 202, 240, 1)',
+                    backgroundColor: 'rgba(13, 202, 240, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Alertas por día'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Número de alertas'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Fecha'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de torta para distribución de alertas por tipo
+        const ctxPie = document.getElementById('alertasPieChart').getContext('2d');
+        const alertasPieChart = new Chart(ctxPie, {
+            type: 'doughnut',
+            data: {
+                labels: ['Signos Vitales', 'Medicación', 'Actividad', 'Caídas'],
+                datasets: [{
+                    data: [43, 28, 15, 14],
+                    backgroundColor: [
+                        'rgba(13, 110, 253, 0.8)',
+                        'rgba(25, 135, 84, 0.8)',
+                        'rgba(255, 193, 7, 0.8)',
+                        'rgba(220, 53, 69, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(13, 110, 253, 1)',
+                        'rgba(25, 135, 84, 1)',
+                        'rgba(255, 193, 7, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Distribución por tipo'
+                    }
+                }
+            }
+        });
+    </script>
+    
+    <!-- Script para simular actualizaciones en tiempo real -->
+    <script>
+        // Simular actualización de alertas al hacer clic en el botón Actualizar
+        document.getElementById('refreshBtn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Actualizando...';
+            
+            // Simular tiempo de carga
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-sync-alt"></i> Actualizar';
+
+                // Mostrar un toast de actualización (requeriría crear el elemento toast)
+                alert('Datos actualizados correctamente');
+            }, 1500);
+        });
+    </script>
+    
+    <!-- Script personalizado para el menú -->
+    <script>
+        // Cerrar menú cuando se hace clic en un enlace en pantallas pequeñas
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    document.querySelector('#sidebarMenu').classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareSync - Dispositivos IoT</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar / Menú lateral -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
+                <div class="position-sticky pt-3">
+                    <div class="logo-container">
+                        <img src="img/logo.jpg" alt="CareSync Logo" class="img-fluid">
+                        <h4 class="text-white">CareSync</h4>
+                        <p class="text-white-50">Gestión de Cuidados</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-home me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pacientes.html">
+                                <i class="fas fa-user-friends me-2"></i>
+                                Registro de Pacientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alertas.html">
+                                <i class="fas fa-bell me-2"></i>
+                                Alertas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportes.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Reportes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dispositivos.html">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Dispositivos IoT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portal.html">
+                                <i class="fas fa-users me-2"></i>
+                                Portal Familiar
+                            </a>
+                        </li>
+                        <li class="nav-item mt-5">
+                            <a class="nav-link text-danger" href="index.html">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Navbar superior con botón para mostrar/ocultar menú -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <h1 class="h2 mb-0">Dispositivos IoT</h1>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> Admin
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="index.html">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Resumen de dispositivos -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Dispositivos Totales</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">24</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-microchip fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Dispositivos Conectados</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-wifi fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Batería Baja</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-battery-quarter fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-danger shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Requieren Mantenimiento</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de dispositivos -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Dispositivos Registrados</h6>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-plus me-1"></i> Añadir Dispositivo
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Tipo</th>
+                                                <th>Paciente</th>
+                                                <th>Estado</th>
+                                                <th>Batería</th>
+                                                <th>Última Sincronización</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>DEV-001</td>
+                                                <td><i class="fas fa-heartbeat me-2 text-danger"></i> Monitor de Presión Arterial</td>
+                                                <td>Manuel García</td>
+                                                <td><span class="badge bg-success">Conectado</span></td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                                    </div>
+                                                </td>
+                                                <td>Hace 5 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-chart-line"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DEV-002</td>
+                                                <td><i class="fas fa-tint me-2 text-info"></i> Monitor de Glucosa</td>
+                                                <td>Carmen Torres</td>
+                                                <td><span class="badge bg-success">Conectado</span></td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px;">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
+                                                    </div>
+                                                </td>
+                                                <td>Hace 10 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-chart-line"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DEV-003</td>
+                                                <td><i class="fas fa-thermometer-half me-2 text-danger"></i> Termómetro Digital</td>
+                                                <td>Carmen Ruiz</td>
+                                                <td><span class="badge bg-success">Conectado</span></td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                                    </div>
+                                                </td>
+                                                <td>Hace 15 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-chart-line"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DEV-004</td>
+                                                <td><i class="fas fa-running me-2 text-success"></i> Monitor de Actividad</td>
+                                                <td>Juan Pérez</td>
+                                                <td><span class="badge bg-danger">Desconectado</span></td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px;">
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">15%</div>
+                                                    </div>
+                                                </td>
+                                                <td>Hace 2 horas</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-chart-line"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DEV-005</td>
+                                                <td><i class="fas fa-pills me-2 text-primary"></i> Dispensador de Medicación</td>
+                                                <td>María López</td>
+                                                <td><span class="badge bg-success">Conectado</span></td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                                    </div>
+                                                </td>
+                                                <td>Hace 20 min</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-chart-line"></i></button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>DEV-006</td>
+                                                <td><i class="fas fa-lungs me-2 text-info"></i> Oxímetro</td>
+                                                <td>Luis Martín</td>
+                                                <td><span class="badge bg-warning">Mantenimiento</span></td>
+                                                <td>
+                                                    <div class="progress" style="height: 10px;">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                                    </div>
+                                                </td>
+                                                <td>Hace 1 día</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync"></i></button>
+                                                    <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></button>
+                                                    <button class="btn btn-sm btn-outline-info"><i class="fas fa-chart-line"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa de ubicación de dispositivos -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Ubicación de Dispositivos</h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="deviceMapContainer" class="position-relative" style="height: 400px; background-color: #e9ecef; border-radius: 0.5rem; overflow: hidden;">
+                                    <!-- Mapa base (simulado con CSS) -->
+                                    <div id="deviceMap" class="w-100 h-100">
+                                        <!-- Dispositivos en el mapa (puntos) -->
+                                        <div class="device-point" style="top: 30%; left: 45%;" data-bs-toggle="tooltip" data-bs-placement="top" title="DEV-001: Monitor de Presión Arterial - Manuel García">
+                                            <i class="fas fa-heartbeat"></i>
+                                        </div>
+                                        <div class="device-point" style="top: 50%; left: 60%;" data-bs-toggle="tooltip" data-bs-placement="top" title="DEV-002: Monitor de Glucosa - Carmen Torres">
+                                            <i class="fas fa-tint"></i>
+                                        </div>
+                                        <div class="device-point" style="top: 40%; left: 30%;" data-bs-toggle="tooltip" data-bs-placement="top" title="DEV-003: Termómetro Digital - Carmen Ruiz">
+                                            <i class="fas fa-thermometer-half"></i>
+                                        </div>
+                                        <div class="device-point disconnected" style="top: 60%; left: 25%;" data-bs-toggle="tooltip" data-bs-placement="top" title="DEV-004: Monitor de Actividad - Juan Pérez">
+                                            <i class="fas fa-running"></i>
+                                        </div>
+                                        <div class="device-point" style="top: 45%; left: 70%;" data-bs-toggle="tooltip" data-bs-placement="top" title="DEV-005: Dispensador de Medicación - María López">
+                                            <i class="fas fa-pills"></i>
+                                        </div>
+                                        <div class="device-point warning" style="top: 55%; left: 40%;" data-bs-toggle="tooltip" data-bs-placement="top" title="DEV-006: Oxímetro - Luis Martín">
+                                            <i class="fas fa-lungs"></i>
+                                        </div>
+                                        
+                                        <!-- Áreas de la casa (simuladas con CSS) -->
+                                        <div class="map-area" style="top: 20%; left: 20%; width: 30%; height: 25%;">
+                                            Sala de estar
+                                        </div>
+                                        <div class="map-area" style="top: 20%; left: 55%; width: 25%; height: 25%;">
+                                            Dormitorio 1
+                                        </div>
+                                        <div class="map-area" style="top: 50%; left: 20%; width: 30%; height: 25%;">
+                                            Cocina
+                                        </div>
+                                        <div class="map-area" style="top: 50%; left: 55%; width: 25%; height: 25%;">
+                                            Dormitorio 2
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <div class="small text-muted mb-2">
+                                        Este mapa muestra la ubicación actual de todos los dispositivos activos.
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center flex-wrap">
+                                        <div class="me-3 mb-2">
+                                            <span class="badge rounded-pill bg-success me-1">&nbsp;</span> Conectado
+                                        </div>
+                                        <div class="me-3 mb-2">
+                                            <span class="badge rounded-pill bg-warning me-1">&nbsp;</span> Mantenimiento
+                                        </div>
+                                        <div class="mb-2">
+                                            <span class="badge rounded-pill bg-danger me-1">&nbsp;</span> Desconectado
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sincronización de datos -->
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Sincronización de Datos</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-4">
+                                    <p><strong>Última sincronización completa:</strong> 20/10/2023 08:30</p>
+                                    <p><strong>Estado de la nube:</strong> <span class="text-success"><i class="fas fa-check-circle"></i> Conectado</span></p>
+                                    <p><strong>Espacio de almacenamiento:</strong></p>
+                                    <div class="progress mb-2" style="height: 10px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
+                                    <small class="text-muted">2.5 GB de 10 GB utilizados</small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-sync-alt me-1"></i> Sincronizar Ahora
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fas fa-cog me-1"></i> Configurar Sincronización
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Registro de Actividad</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="overflow-auto" style="max-height: 240px;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><i class="fas fa-plus-circle text-success me-1"></i> Dispositivo conectado</div>
+                                                DEV-001 - Monitor de Presión Arterial
+                                            </div>
+                                            <span class="text-muted small">Hace 5 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><i class="fas fa-exclamation-circle text-warning me-1"></i> Batería baja</div>
+                                                DEV-002 - Monitor de Glucosa (35%)
+                                            </div>
+                                            <span class="text-muted small">Hace 15 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><i class="fas fa-check-circle text-success me-1"></i> Datos sincronizados</div>
+                                                DEV-003 - Termómetro Digital
+                                            </div>
+                                            <span class="text-muted small">Hace 30 min</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><i class="fas fa-times-circle text-danger me-1"></i> Dispositivo desconectado</div>
+                                                DEV-004 - Monitor de Actividad
+                                            </div>
+                                            <span class="text-muted small">Hace 2 horas</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold"><i class="fas fa-cog text-primary me-1"></i> Configuración actualizada</div>
+                                                DEV-005 - Dispensador de Medicación
+                                            </div>
+                                            <span class="text-muted small">Hace 3 horas</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js - Para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Script personalizado para el menú -->
+    <script>
+        // Cerrar menú cuando se hace clic en un enlace en pantallas pequeñas
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    document.querySelector('#sidebarMenu').classList.remove('show');
+                }
+            });
+        });
+    </script>
+
+    <!-- Script para el mapa de dispositivos -->
+    <script>
+        // Inicializar todos los tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+            
+            // Simular movimiento de dispositivos cada 8 segundos
+            setInterval(function() {
+                const devicePoints = document.querySelectorAll('.device-point');
+                devicePoints.forEach(point => {
+                    // Generar pequeños movimientos aleatorios para simular desplazamiento
+                    const currentTop = parseFloat(point.style.top);
+                    const currentLeft = parseFloat(point.style.left);
+                    
+                    // Pequeña variación aleatoria (±2%)
+                    const newTop = Math.max(10, Math.min(90, currentTop + (Math.random() * 4 - 2)));
+                    const newLeft = Math.max(10, Math.min(90, currentLeft + (Math.random() * 4 - 2)));
+                    
+                    // Aplicar nueva posición con animación
+                    point.style.transition = 'top 1.5s, left 1.5s';
+                    point.style.top = newTop + '%';
+                    point.style.left = newLeft + '%';
+                });
+            }, 8000);
+        });
+    </script>
+</body>
+</html> 
